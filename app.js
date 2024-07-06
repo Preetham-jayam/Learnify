@@ -5,8 +5,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session); 
 const mongoose = require("mongoose");
 const passport = require("passport");
-const compression = require("compression");
-const helmet = require("helmet");
+
 
 require("./models/User");
 require("./models/Post");
@@ -23,8 +22,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 app.use(express.json());  
-app.use(compression());
-app.use(helmet());
+
 
 if (process.env.NODE_ENV === 'production') {
   app.set('trust proxy', 1); 
