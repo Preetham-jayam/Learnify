@@ -5,6 +5,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session); 
 const mongoose = require("mongoose");
 const passport = require("passport");
+const compression = require("compression");
+const helmet = require("helmet");
 
 require("./models/User");
 require("./models/Post");
@@ -21,12 +23,22 @@ app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 app.use(express.json());  
+app.use(compression());
+app.use(helmet());
+
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1); 
+}
 
 app.use(
   session({
     secret: "mysecretkey", 
     resave: false,
     saveUninitialized: true,
+    cookie: { 
+      secure: process.env.NODE_ENV === 'production', 
+      httpOnly: true 
+    },
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
@@ -44,6 +56,12 @@ app.use("/", require("./routes/upload"));
 app.get("/*", (req, res) => {
   res.render("error-404");
 });
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
