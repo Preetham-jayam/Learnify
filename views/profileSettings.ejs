@@ -330,7 +330,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        image: `https://d26exrmhvlzzte.cloudfront.net/${urlData.fileName}`,
+        image: `${process.env.CLOUDFRONT_DDN}/${urlData.fileName}`,
       }),
     });
 
@@ -367,7 +367,7 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        cover: `https://d26exrmhvlzzte.cloudfront.net/${urlData.fileName}`,
+        cover: `${process.env.CLOUDFRONT_DDN}/${urlData.fileName}`,
       }),
     });
 

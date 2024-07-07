@@ -370,8 +370,8 @@
         title,
         subTitle,
         description,
-        thumbnailKey: `https://d26exrmhvlzzte.cloudfront.net/${urlData.fileName}`,
-        videoKey: `https://d26exrmhvlzzte.cloudfront.net/${urlData1.fileName}`,
+        thumbnailKey: `${process.env.CLOUDFRONT_DDN}/${urlData.fileName}`,
+        videoKey: `${process.env.CLOUDFRONT_DDN}/${urlData1.fileName}`,
       }),
       headers: {
         "Content-Type": "application/json",
