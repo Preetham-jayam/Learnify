@@ -2,7 +2,7 @@
 
 ## About the Project
 
-This full-stack web application, built with the MERN (MongoDB, Express.js, React.js, Node.js) stack, features OAuth 2.0 authentication for secure Google sign-ins. It includes role-based access control for "Creator" and "Student" roles, enabling Creators to upload and post videos while Students can view them. The app supports infinite threaded comments and utilizes AWS S3 and CDN for efficient media storage and delivery, employing Pre-Signed URLs for direct uploads.
+This Node.js web application using EJS template engine which features OAuth 2.0 authentication for secure Google sign-ins. It includes role-based access control for "Creator" and "Student" roles, enabling Creators to upload and post videos while Students can view them. The app supports infinite threaded comments and utilizes AWS S3 and CDN for efficient media storage and delivery, employing Pre-Signed URLs for direct uploads.
 
 ## Features
 
@@ -17,8 +17,7 @@ This full-stack web application, built with the MERN (MongoDB, Express.js, React
 
 ## Tech Stack
 
-- **Frontend**: React.js
-- **Backend**: Node.js, Express.js
+- **Backend**: Node.js, Express.js,EJS
 - **Database**: MongoDB
 - **Authentication**: OAuth 2.0 (Google)
 - **Cloud Services**: AWS S3, AWS CloudFront (CDN)
